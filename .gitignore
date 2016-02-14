@@ -3,9 +3,11 @@
 
 # Intelli J files
 .idea/
-*.iml
+*.iml# IntelliJ
+/out/
 
 # Maven
 pom.properties
 *.jar
 target/*
+
