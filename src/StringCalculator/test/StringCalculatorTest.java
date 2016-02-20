@@ -7,10 +7,15 @@ import static org.junit.Assert.*;
 
 public class StringCalculatorTest {
 
+    private StringCalculator stringCalculator = new StringCalculator();
+
     @Test
     public void should_return_zero_when_input_is_empty() {
-        StringCalculator stringCalculator = new StringCalculator();
         assertEquals(0, stringCalculator.add(""));
     }
 
+    @Test
+    public void should_return_one_number_when_input_has_only_one_number() {
+        assertEquals(3, stringCalculator.add("3"));
+    }
 }
