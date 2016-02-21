@@ -7,6 +7,13 @@ public class StringCalculator {
             return 0;
         }
 
-        return Integer.valueOf(numbers);
+        int result = 0;
+        String[] splittedNumbers = numbers.split(",");
+
+        for (String number : splittedNumbers)  {
+            result += Integer.valueOf(number);
+        }
+
+        return result;
     }
 }
