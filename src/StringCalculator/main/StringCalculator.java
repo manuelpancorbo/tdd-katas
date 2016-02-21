@@ -1,17 +1,17 @@
 package StringCalculator.main;
 
+import java.util.List;
+
 public class StringCalculator {
 
+    private NumbersExtractor numbersExtractor = new NumbersExtractor();
+
     public int add(String numbers) {
-        if (numbers.isEmpty()) {
-            return 0;
-        }
-
         int result = 0;
-        String[] splittedNumbers = numbers.split(",");
+        List<Integer> numbersList = numbersExtractor.extractNumbers(numbers);
 
-        for (String number : splittedNumbers)  {
-            result += Integer.valueOf(number);
+        for (Integer number : numbersList)  {
+            result += number;
         }
 
         return result;
