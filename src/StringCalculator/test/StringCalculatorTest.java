@@ -24,4 +24,9 @@ public class StringCalculatorTest {
         assertEquals(5, stringCalculator.add("3,2"));
     }
 
+    @Test
+    public void should_return_sum_when_input_has_numbers_separated_by_commas_and_eols() {
+        assertEquals(9, stringCalculator.add("4,3\n2"));
+    }
+
 }
