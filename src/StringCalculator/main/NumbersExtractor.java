@@ -6,8 +6,10 @@ import java.util.List;
 
 public class NumbersExtractor {
 
-    private static final String NORMALIZED_DELIMITER = "|";
+    private static final String NORMALIZER_DELIMITER = "|";
     private static final String[] DEFAULT_DELIMITERS = {",", "\n"};
+
+    private DelimitersNormalizer delimitersNormalizer = new DelimitersNormalizer();
 
     public List<Integer> extractNumbers(String numbers) {
         if (numbers.isEmpty()) {
@@ -15,22 +17,14 @@ public class NumbersExtractor {
         }
 
         List<Integer> numbersList = new LinkedList<Integer>();
-        String numbersWithNormalizedDelimiter = getNumbersWithNormalizedDelimiter(numbers);
-        String[] splittedNumbers = numbersWithNormalizedDelimiter.split("[" + NORMALIZED_DELIMITER + "]");
+        String numbersWithNormalizedDelimiter = delimitersNormalizer.normalizeDelimiters(numbers, NORMALIZER_DELIMITER);
+        String[] splittedNumbers = numbersWithNormalizedDelimiter.split("[" + NORMALIZER_DELIMITER + "]");
 
         for (String number : splittedNumbers)  {
             numbersList.add(Integer.valueOf(number));
         }
 
         return numbersList;
-    }
-
-    private String getNumbersWithNormalizedDelimiter(String numbers) {
-        String normalizedInput = numbers;
-        for (String delimiter : DEFAULT_DELIMITERS) {
-            normalizedInput = normalizedInput.replace(delimiter, NORMALIZED_DELIMITER);
-        }
-        return normalizedInput;
     }
 
 }
