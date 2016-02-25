@@ -28,10 +28,4 @@ public class NumbersExtractorTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    public void should_return_list_with_numbers_when_input_has_numbers_separated_by_commas_and_eols() {
-        List<Integer> expected = Arrays.asList(1, 2, 3);
-        List<Integer> actual = numbersExtractor.extractNumbers("1,2\n3");
-    }
-
 }
