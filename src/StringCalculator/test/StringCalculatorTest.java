@@ -26,9 +26,4 @@ public class StringCalculatorTest {
         assertEquals(5, stringCalculator.add("3,2"));
     }
 
-   @Test(expected = NegativesNotAllowedException.class)
-   public void should_throw_a_exception_when_input_has_negatives() throws ValidationException {
-       stringCalculator.add("1,-2,5,-1");
-   }
-
 }
