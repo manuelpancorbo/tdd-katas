@@ -14,7 +14,7 @@ public class StringCalculator {
     public int add(String numbers) throws ValidationException {
         int result = 0;
         List<Integer> numbersList = numbersExtractor.extractNumbers(numbers);
-        validateNumbers(numbersList);
+        numbersList = validateNumbers(numbersList);
 
         for (Integer number : numbersList)  {
             result += number;
@@ -23,7 +23,8 @@ public class StringCalculator {
         return result;
     }
 
-    public void validateNumbers(List<Integer> numbers) throws ValidationException {
-        negativesNotAllowedValidator.validate(numbers);
+    public List<Integer> validateNumbers(List<Integer> numbers) throws ValidationException {
+        List<Integer> validatedNumbers = negativesNotAllowedValidator.validate(numbers);
+        return validatedNumbers;
     }
 }

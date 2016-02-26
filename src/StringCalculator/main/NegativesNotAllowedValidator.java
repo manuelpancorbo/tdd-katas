@@ -8,7 +8,7 @@ import java.util.List;
 public class NegativesNotAllowedValidator implements NumbersValidator {
 
     @Override
-    public void validate(List<Integer> numbers) throws NegativesNotAllowedException {
+    public List<Integer> validate(List<Integer> numbers) throws NegativesNotAllowedException {
         List<Integer> negatives = new LinkedList<>();
         for (int number : numbers) {
             if (number < 0) {
@@ -19,5 +19,7 @@ public class NegativesNotAllowedValidator implements NumbersValidator {
         if (!negatives.isEmpty()) {
             throw new NegativesNotAllowedException(negatives);
         }
+
+        return numbers;
     }
 }

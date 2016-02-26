@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface NumbersValidator {
 
-    public void validate(List<Integer> numbers) throws NegativesNotAllowedException;
+    public List<Integer> validate(List<Integer> numbers) throws NegativesNotAllowedException;
 }
