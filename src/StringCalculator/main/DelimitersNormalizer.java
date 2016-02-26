@@ -3,6 +3,8 @@ package StringCalculator.main;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DelimitersNormalizer {
 
@@ -26,7 +28,7 @@ public class DelimitersNormalizer {
         List<String> delimitersList = new LinkedList<>(Arrays.asList(DEFAULT_DELIMITERS));
 
         if (isThereCustomDelimiter(numbers)) {
-            delimitersList.add(getCustomDelimiter(numbers));
+            delimitersList.addAll(getCustomDelimiters(numbers));
         }
 
         return delimitersList;
@@ -36,8 +38,16 @@ public class DelimitersNormalizer {
         return numbers.startsWith(DELIMITERS_LINE_START);
     }
 
-    private String getCustomDelimiter(String numbers) {
-        return numbers.substring(2,3);
+    private List<String> getCustomDelimiters(String numbers) {
+        List<String> customDelimiters = new LinkedList<>();
+        Pattern pattern = Pattern.compile("\\[(.*?)\\]");
+        Matcher matcher = pattern.matcher(numbers);
+
+        while (matcher.find()) {
+            customDelimiters.add(matcher.group(1));
+        }
+
+        return customDelimiters;
     }
 
     private String removeDelimitersLine(String numbers) {

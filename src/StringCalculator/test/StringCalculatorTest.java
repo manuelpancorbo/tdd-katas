@@ -26,6 +26,11 @@ public class StringCalculatorTest {
         assertEquals(5, stringCalculator.add("3,2"));
     }
 
+    @Test(expected = NegativesNotAllowedException.class)
+    public void should_throw_exception_when_input_has_negatives_numbers() throws ValidationException {
+        stringCalculator.add("-2,1");
+    }
+
     @Test
     public void should_return_sum_ignoring_numbers_greater_than_one_thousand() throws ValidationException {
         assertEquals(2, stringCalculator.add("2,1001"));

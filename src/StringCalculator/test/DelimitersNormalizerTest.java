@@ -17,6 +17,6 @@ public class DelimitersNormalizerTest {
 
     @Test
     public void should_replace_numbers_delimiters_by_dollar_symbol() {
-        assertEquals("1$2$3$4", delimitersNormalizer.normalizeDelimiters("//*\n1*2,3\n4", "$"));
+        assertEquals("1$2$3$4", delimitersNormalizer.normalizeDelimiters("//[**][xyz]\n1**2xyz3\n4", "$"));
     }
 }
