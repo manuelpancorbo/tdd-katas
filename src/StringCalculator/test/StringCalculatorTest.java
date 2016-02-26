@@ -26,4 +26,9 @@ public class StringCalculatorTest {
         assertEquals(5, stringCalculator.add("3,2"));
     }
 
+    @Test
+    public void should_return_sum_ignoring_numbers_greater_than_one_thousand() throws ValidationException {
+        assertEquals(2, stringCalculator.add("2,1001"));
+    }
+
 }
